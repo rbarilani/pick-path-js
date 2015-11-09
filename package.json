@@ -1,7 +1,7 @@
 {
   "name": "pick-path-js",
   "version": "0.0.0-alpha.0",
-  "description": "",
+  "description": "Utility function to access deep object properties by path.",
   "main": "src/pickPath.js",
   "scripts": {
     "test": "karma start"
