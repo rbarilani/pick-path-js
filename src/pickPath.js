@@ -17,13 +17,6 @@
  * pickPath(obj, 'foo.bar');         // # { john: [99,100] }
  * pickPath(obj, 'foo.bar.john[1]'); // # 100
  *
- * // using the mixin method
- * pickPath.mixin(obj);
- *
- * obj.pickPath('john.doe');        // # 'Hello World'
- * obj.pickPath('foo.bar');         // # { john: [99,100] }
- * obj.pickPath('foo.bar.john[1]'); // # 100
- *
  * ```
  *
  * @param {Object} obj
@@ -48,19 +41,6 @@ export default function pickPath (obj, path) {
   });
   return ref;
 }
-
-/**
- * Add a pickByPath method to the provided object
- *
- * @param {Object} obj
- * @returns {Object} obj
- */
-pickPath.mixin = function (obj) {
-  obj.pickPath = function (path) {
-    return pickPath(this, path);
-  };
-  return obj;
-};
 
 /**
  * @private

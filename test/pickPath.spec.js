@@ -51,28 +51,4 @@ describe('pickPath', function () {
       expect(pickPath(obj, 'foo.posts[2].message')).toBeUndefined();
     });
   });
-
-  /**
-   * Mixin
-   */
-  describe('pickPath.mixin(obj)', () => {
-
-    beforeEach(() => pickPath.mixin(obj));
-
-    describe('obj.pickPath(path)', () => {
-      it('should return the correct value for the provided path... or just it should work :)', () => {
-        expect(obj.pickPath('foo.bar.john')).toBe(obj.foo.bar.john);
-      });
-
-      it('should return the updated value if it was changed', () => {
-        expect(obj.pickPath('foo.bar.john')).toBe('Doe');
-        obj.foo.bar.john = 'Ueeee'; // change data
-        objJson = JSON.stringify(obj);
-        expect(obj.pickPath('foo.bar.john')).toBe(obj.foo.bar.john);
-        expect(obj.pickPath('foo.bar.john')).toBe('Ueeee');
-        expect(JSON.stringify(obj)).toBe(objJson);
-      });
-    });
-  });
-
 });
