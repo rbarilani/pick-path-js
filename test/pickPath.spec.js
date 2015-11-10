@@ -50,5 +50,14 @@ describe('pickPath', function () {
       expect(pickPath(obj, 'posts[2].message')).toBe(obj.posts[2].message);
       expect(pickPath(obj, 'foo.posts[2].message')).toBeUndefined();
     });
+
+    it('should return the updated value if it was changed', () => {
+      expect(pickPath(obj, 'foo.bar.john')).toBe('Doe');
+      obj.foo.bar.john = 'Ueeee'; // change data
+      objJson = JSON.stringify(obj);
+      expect(pickPath(obj, 'foo.bar.john')).toBe(obj.foo.bar.john);
+      expect(pickPath(obj, 'foo.bar.john')).toBe('Ueeee');
+      expect(JSON.stringify(obj)).toBe(objJson);
+    });
   });
 });
